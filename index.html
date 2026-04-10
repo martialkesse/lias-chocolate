@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LIA's-CHOCOLATE - Premium chocolate manufacturer crafting exquisite bars, truffles & gifts from the finest cocoa.">
+    <title>LIA's-CHOCOLATE | Premium Chocolate Manufacturer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500&amp;display=swap');
+        
+        :root {
+            --choco: #3f2a1f;
+            --gold: #d4af77;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .tail-container * {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(63, 42, 31, 0.75), rgba(63, 42, 31, 0.75)), url('https://picsum.photos/seed/lia-chocolate-hero/1920/1080');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #d4af77;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .choco-button {
+            background: linear-gradient(90deg, #3f2a1f, #d4af77);
+            color: white;
+        }
+        
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #d4af77;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="tail-container">
+    <!-- NAVBAR -->
+    <nav class="bg-[#3f2a1f] text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-x-3">
+                <div class="w-10 h-10 bg-[#d4af77] rounded-2xl flex items-center justify-center text-[#3f2a1f] text-2xl font-bold rotate-12">🍫</div>
+                <div>
+                    <h1 class="heading-font text-3xl tracking-tighter">LIA'S-CHOCOLATE</h1>
+                    <p class="text-xs text-[#d4af77] -mt-1 tracking-[2px]">EST. 2024 • ABIDJAN</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#home" class="nav-link">HOME</a>
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#products" class="nav-link">PRODUCTS</a>
+                <a href="#process" class="nav-link">OUR PROCESS</a>
+                <a href="#shop" class="nav-link">SHOP</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
+            </div>
+
+            <div class="flex items-center gap-x-4">
+                <!-- Cart -->
+                <a href="#" onclick="toggleCart()" class="flex items-center gap-x-1 hover:text-[#d4af77]">
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    <span id="cart-count" class="text-xs bg-[#d4af77] text-[#3f2a1f] px-2 py-px rounded-full font-bold">0</span>
+                </a>
+                
+                <!-- Mobile Hamburger -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+                    <i id="hamburger-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#3f2a1f] px-6 pb-6">
+            <div class="flex flex-col gap-y-4 text-sm font-medium">
+                <a href="#home" onclick="toggleMobileMenu()" class="py-2 border-b border-white/20">HOME</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="py-2 border-b border-white/20">ABOUT</a>
+                <a href="#products" onclick="toggleMobileMenu()" class="py-2 border-b border-white/20">PRODUCTS</a>
+                <a href="#process" onclick="toggleMobileMenu()" class="py-2 border-b border-white/20">OUR PROCESS</a>
+                <a href="#shop" onclick="toggleMobileMenu()" class="py-2 border-b border-white/20">SHOP</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="py-2">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl text-sm mb-6">
+                    <div class="w-2 h-2 bg-[#d4af77] rounded-full animate-pulse"></div>
+                    PROUDLY CRAFTED IN IVORY COAST
+                </div>
+                
+                <h1 class="heading-font text-6xl md:text-7xl leading-none font-bold mb-4">
+                    PURE COCOA.<br>PURE BLISS.
+                </h1>
+                <p class="text-xl text-white/90 mb-10 max-w-md">
+                    Premium chocolate manufactured with love using the world's finest cocoa beans from the heart of Côte d'Ivoire.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#products" 
+                       onclick="document.getElementById('products').scrollIntoView({ behavior: 'smooth' })"
+                       class="choco-button px-10 py-5 rounded-2xl text-lg font-semibold flex items-center gap-x-3 hover:scale-105">
+                        <i class="fa-solid fa-chocolate-bar"></i>
+                        EXPLORE OUR COLLECTION
+                    </a>
+                    <a href="#about" 
+                       onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })"
+                       class="border-2 border-white px-10 py-5 rounded-2xl text-lg font-medium hover:bg-white/10">
+                        OUR STORY →
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex items-center gap-x-8 text-sm">
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-leaf text-[#d4af77] text-2xl mr-3"></i>
+                        <div>
+                            <div class="font-semibold">ETHICALLY SOURCED</div>
+                            <div class="text-white/70">Direct from Ivorian farmers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-medal text-[#d4af77] text-2xl mr-3"></i>
+                        <div>
+                            <div class="font-semibold">BEAN-TO-BAR</div>
+                            <div class="text-white/70">Crafted in our Abidjan factory</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating chocolate badge -->
+        <div class="hidden xl:block absolute bottom-12 right-12 bg-white text-[#3f2a1f] px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-x-3 rotate-[-8deg]">
+            <span class="text-4xl">🍫</span>
+            <div>
+                <div class="text-sm font-bold">NOW SHIPPING WORLDWIDE</div>
+                <div class="text-xs">Fresh from our factory daily</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="py-24 bg-[#f8f1e9]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="uppercase text-[#d4af77] tracking-widest text-sm font-semibold">Since 2024 • Abidjan, Côte d'Ivoire</span>
+                    <h2 class="heading-font text-5xl font-bold text-[#3f2a1f] mt-2 mb-6">LIA's-CHOCOLATE is more than chocolate.<br>It's a legacy of flavor.</h2>
+                    <p class="text-lg text-[#3f2a1f]/80 leading-relaxed mb-8">
+                        Founded in Abidjan by passionate chocolatiers, we transform the world's best cocoa — grown right here in Ivory Coast — into premium chocolate creations. 
+                        Every bar tells a story of tradition, innovation, and unmatched quality.
+                    </p>
+                    <div class="flex items-center gap-x-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-[#d4af77]">100%</div>
+                            <div class="text-xs uppercase tracking-widest">Ivorian Cocoa</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-[#d4af77]">10+</div>
+                            <div class="text-xs uppercase tracking-widest">Unique Recipes</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-[#d4af77]">8</div>
+                            <div class="text-xs uppercase tracking-widest">Countries Exported</div>
+                        </div>
+                    </div>
+                    <a href="#process" class="mt-10 inline-flex items-center text-[#3f2a1f] font-semibold">
+                        DISCOVER OUR JOURNEY <span class="ml-3 text-2xl">→</span>
+                    </a>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://picsum.photos/seed/lia-factory/800/900" 
+                         alt="LIA's Chocolate Factory in Abidjan"
+                         class="rounded-3xl shadow-2xl w-full">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl max-w-[220px]">
+                        <p class="text-sm italic">"The best chocolate I've tasted in 50 years of traveling the cocoa belt."</p>
+                        <p class="text-xs mt-4 font-semibold">— Chef Pierre Laurent, Paris</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-5 py-2 bg-[#3f2a1f] text-white text-sm rounded-3xl">OUR SIGNATURE COLLECTION</span>
+                <h2 class="heading-font text-5xl text-[#3f2a1f] mt-4">Handcrafted with passion</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div onclick="addToCart(1)" class="product-card group bg-white border border-[#f0e6d9] rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="h-64 bg-[#f8f1e9] flex items-center justify-center p-8">
+                        <img src="https://picsum.photos/seed/dark-chocolate-lia/600/600" alt="Dark Chocolate" class="w-full h-full object-contain group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-semibold text-xl">Signature Dark 72%</h3>
+                            <span class="text-[#d4af77] font-bold">CFA 8,500</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">Intense single-origin cocoa with notes of red fruit &amp; spice</p>
+                        <button class="mt-6 w-full bg-[#3f2a1f] hover:bg-black text-white py-4 rounded-2xl text-sm font-medium">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div onclick="addToCart(2)" class="product-card group bg-white border border-[#f0e6d9] rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="h-64 bg-[#f8f1e9] flex items-center justify-center p-8">
+                        <img src="https://picsum.photos/seed/milk-chocolate-lia/600/600" alt="Milk Chocolate" class="w-full h-full object-contain group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-semibold text-xl">Velvet Milk 38%</h3>
+                            <span class="text-[#d4af77] font-bold">CFA 7,900</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">Creamy milk chocolate with Madagascar vanilla</p>
+                        <button class="mt-6 w-full bg-[#3f2a1f] hover:bg-black text-white py-4 rounded-2xl text-sm font-medium">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div onclick="addToCart(3)" class="product-card group bg-white border border-[#f0e6d9] rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="h-64 bg-[#f8f1e9] flex items-center justify-center p-8">
+                        <img src="https://picsum.photos/seed/truffles-lia/600/600" alt="Truffles" class="w-full h-full object-contain group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-semibold text-xl">Luxury Truffle Gift Box</h3>
+                            <span class="text-[#d4af77] font-bold">CFA 18,000</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">8 hand-rolled truffles in assorted flavors</p>
+                        <button class="mt-6 w-full bg-[#3f2a1f] hover:bg-black text-white py-4 rounded-2xl text-sm font-medium">ADD TO CART</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div onclick="addToCart(4)" class="product-card group bg-white border border-[#f0e6d9] rounded-3xl overflow-hidden cursor-pointer">
+                    <div class="h-64 bg-[#f8f1e9] flex items-center justify-center p-8">
+                        <img src="https://picsum.photos/seed/white-chocolate-lia/600/600" alt="White Chocolate" class="w-full h-full object-contain group-hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-semibold text-xl">Ivory White &amp; Pistachio</h3>
+                            <span class="text-[#d4af77] font-bold">CFA 9,200</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">Creamy white chocolate with toasted pistachios</p>
+                        <button class="mt-6 w-full bg-[#3f2a1f] hover:bg-black text-white py-4 rounded-2xl text-sm font-medium">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR PROCESS -->
+    <section id="process" class="py-24 bg-[#3f2a1f] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-5 py-2 bg-[#d4af77] text-[#3f2a1f] text-sm rounded-3xl">BEAN TO BAR</span>
+                <h2 class="heading-font text-5xl mt-4">From farm to your hands in 7 perfect steps</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-7 gap-6">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🌱</div>
+                    <div class="font-semibold">1. Harvest</div>
+                    <p class="text-xs text-white/70 mt-2">Fresh cocoa pods from Ivorian farms</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🔥</div>
+                    <div class="font-semibold">2. Ferment</div>
+                    <p class="text-xs text-white/70 mt-2">Natural fermentation for rich flavor</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">☀️</div>
+                    <div class="font-semibold">3. Dry</div>
+                    <p class="text-xs text-white/70 mt-2">Sun-dried under African skies</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🏭</div>
+                    <div class="font-semibold">4. Roast</div>
+                    <p class="text-xs text-white/70 mt-2">Small-batch roasting in Abidjan</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🔨</div>
+                    <div class="font-semibold">5. Grind</div>
+                    <p class="text-xs text-white/70 mt-2">Stone-ground into silky liquor</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🍫</div>
+                    <div class="font-semibold">6. Conch</div>
+                    <p class="text-xs text-white/70 mt-2">24-hour refinement for smoothness</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">📦</div>
+                    <div class="font-semibold">7. Temper &amp; Mold</div>
+                    <p class="text-xs text-white/70 mt-2">Hand-finished perfection</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINI SHOP / BROWSE -->
+    <section id="shop" class="py-24 bg-[#f8f1e9]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center heading-font text-5xl mb-16">Ready to indulge?</h2>
+            
+            <div class="flex flex-wrap justify-center gap-6 text-center">
+                <div onclick="window.location.hash = '#products'" class="cursor-pointer bg-white px-10 py-6 rounded-3xl shadow-md hover:shadow-xl flex-1 max-w-[260px]">
+                    <div class="text-5xl mb-4">🍫</div>
+                    <h4 class="font-semibold">Chocolate Bars</h4>
+                    <p class="text-sm">From 72% dark to creamy milk</p>
+                </div>
+                <div onclick="window.location.hash = '#products'" class="cursor-pointer bg-white px-10 py-6 rounded-3xl shadow-md hover:shadow-xl flex-1 max-w-[260px]">
+                    <div class="text-5xl mb-4">🎁</div>
+                    <h4 class="font-semibold">Gift Boxes</h4>
+                    <p class="text-sm">Perfect for corporate or personal gifting</p>
+                </div>
+                <div onclick="window.location.hash = '#products'" class="cursor-pointer bg-white px-10 py-6 rounded-3xl shadow-md hover:shadow-xl flex-1 max-w-[260px]">
+                    <div class="text-5xl mb-4">🍬</div>
+                    <h4 class="font-semibold">Truffles &amp; Pralines</h4>
+                    <p class="text-sm">Handcrafted luxury bites</p>
+                </div>
+                <div onclick="window.location.hash = '#products'" class="cursor-pointer bg-white px-10 py-6 rounded-3xl shadow-md hover:shadow-xl flex-1 max-w-[260px]">
+                    <div class="text-5xl mb-4">☕</div>
+                    <h4 class="font-semibold">Cocoa Powder &amp; Spreads</h4>
+                    <p class="text-sm">For baking &amp; everyday delight</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-sm mt-12 text-[#3f2a1f]/70">🔥 Wholesale available for hotels, restaurants &amp; retailers. Contact us for B2B pricing.</p>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="heading-font text-5xl text-center mb-16">What our chocolate lovers say</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-[#f8f1e9] p-8 rounded-3xl">
+                    <p class="italic">"LIA's dark chocolate is in another league. You can taste the Ivorian terroir in every bite!"</p>
+                    <div class="mt-8 flex items-center gap-x-3">
+                        <div class="w-9 h-9 bg-amber-800 rounded-2xl"></div>
+                        <div>
+                            <div class="font-semibold">Marie Kouadio</div>
+                            <div class="text-xs">Abidjan • Food Blogger</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#f8f1e9] p-8 rounded-3xl">
+                    <p class="italic">"The truffles arrived perfectly fresh from the factory. My clients went crazy over the corporate gift box."</p>
+                    <div class="mt-8 flex items-center gap-x-3">
+                        <div class="w-9 h-9 bg-emerald-800 rounded-2xl"></div>
+                        <div>
+                            <div class="font-semibold">Jean-Philippe Traoré</div>
+                            <div class="text-xs">CEO, Hôtel Ivoire</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#f8f1e9] p-8 rounded-3xl">
+                    <p class="italic">"Finally a chocolate brand that celebrates our beautiful Côte d'Ivoire cocoa. Export quality at local prices!"</p>
+                    <div class="mt-8 flex items-center gap-x-3">
+                        <div class="w-9 h-9 bg-rose-800 rounded-2xl"></div>
+                        <div>
+                            <div class="font-semibold">Aïcha Diallo</div>
+                            <div class="text-xs">Paris • Expat</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-[#3f2a1f] text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="heading-font text-5xl mb-6">Let's make something sweet together</h2>
+                    <p class="text-white/80 mb-10">Whether you're ordering for yourself, your business, or planning an event — we're here to help.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-x-6">
+                            <i class="fa-solid fa-phone text-3xl text-[#d4af77]"></i>
+                            <div>
+                                <div class="font-medium">+225 07 47 54 25 60</div>
+                                <div class="text-sm text-white/70">Abidjan, Côte d'Ivoire</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-x-6">
+                            <i class="fa-solid fa-envelope text-3xl text-[#d4af77]"></i>
+                            <div>
+                                <div class="font-medium">l-c@lias-chocolate.ci</div>
+                                <div class="text-sm text-white/70">Factory tours available by appointment</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-x-6">
+                            <i class="fa-solid fa-map-marker-alt text-3xl text-[#d4af77]"></i>
+                            <div>
+                                <div class="font-medium">Zone Industrielle Yopougon, Abidjan</div>
+                                <div class="text-sm text-white/70">Next to Nestlé </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <form onsubmit="handleSubmit(event)" class="bg-white/10 backdrop-blur-lg p-8 rounded-3xl">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase mb-2">Name</label>
+                            <input type="text" id="name" required class="w-full bg-white/10 border border-white/30 rounded-2xl px-5 py-4 text-white placeholder:text-white/60 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase mb-2">Company</label>
+                            <input type="text" id="company" class="w-full bg-white/10 border border-white/30 rounded-2xl px-5 py-4 text-white placeholder:text-white/60 focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-xs uppercase mb-2">Email</label>
+                        <input type="email" id="email" required class="w-full bg-white/10 border border-white/30 rounded-2xl px-5 py-4 text-white placeholder:text-white/60 focus:outline-none">
+                    </div>
+                    <div class="mt-6">
+                        <label class="block text-xs uppercase mb-2">Message</label>
+                        <textarea id="message" rows="5" required class="w-full bg-white/10 border border-white/30 rounded-3xl px-5 py-4 text-white placeholder:text-white/60 focus:outline-none resize-none"></textarea>
+                    </div>
+                    <button type="submit" 
+                            class="mt-8 w-full choco-button py-6 text-lg font-semibold rounded-3xl flex items-center justify-center gap-x-3">
+                        SEND MESSAGE 
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-y-12">
+                <div>
+                    <div class="flex items-center gap-x-3 mb-6">
+                        <div class="w-9 h-9 bg-[#d4af77] rounded-2xl flex items-center justify-center text-3xl text-black">🍫</div>
+                        <h3 class="heading-font text-3xl">LIA'S-CHOCOLATE</h3>
+                    </div>
+                    <p class="text-white/60 text-sm">Crafting the future of Ivorian chocolate.<br>One perfect bar at a time.</p>
+                </div>
+                
+                <div>
+                    <div class="font-semibold mb-4">Quick Links</div>
+                    <ul class="space-y-3 text-sm text-white/70">
+                        <li><a href="#about" class="hover:text-white">Our Story</a></li>
+                        <li><a href="#process" class="hover:text-white">Bean-to-Bar Process</a></li>
+                        <li><a href="#products" class="hover:text-white">Collections</a></li>
+                        <li><a href="#" class="hover:text-white">Wholesale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="font-semibold mb-4">Follow the sweetness</div>
+                    <div class="flex gap-x-6 text-2xl">
+                        <a href="#" class="hover:text-[#d4af77]"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-[#d4af77]"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-[#d4af77]"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-[#d4af77]"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                    <p class="mt-8 text-xs text-white/60">© 2026 LIA's-CHOCOLATE. All Rights Reserved.</p>
+                </div>
+                
+                <div class="text-sm">
+                    <p class="font-medium mb-2">Factory &amp; Showroom</p>
+                    <p class="text-white/70">Zone Industrielle Yopougon<br>Abidjan, Côte d'Ivoire</p>
+                    <p class="mt-6">Open Monday–Saturday • 8am–4:45pm</p>
+                    <p class="text-[#d4af77] text-sm mt-8">📍 Visit us and watch chocolate being made live!</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Cart Modal -->
+    <div id="cart-modal" onclick="if(event.target.id === 'cart-modal') toggleCart()" 
+         class="hidden fixed inset-0 bg-black/70 flex items-end md:items-center justify-center z-[9999]">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white w-full md:w-96 md:rounded-3xl rounded-t-3xl max-h-[90vh] overflow-auto">
+            <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white">
+                <h3 class="font-semibold text-2xl">Your Cart</h3>
+                <button onclick="toggleCart()" class="text-2xl">✕</button>
+            </div>
+            
+            <div id="cart-items" class="p-6 min-h-[200px]">
+                <!-- Filled by JS -->
+                <p class="text-center text-gray-400 py-12">Your cart is empty.<br>Start adding some chocolate magic!</p>
+            </div>
+            
+            <div class="p-6 border-t">
+                <div class="flex justify-between text-sm mb-2">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal" class="font-semibold">CFA 0</span>
+                </div>
+                <button onclick="checkout()" 
+                        class="w-full py-6 bg-[#3f2a1f] text-white rounded-3xl text-lg font-medium">
+                    PROCEED TO CHECKOUT
+                </button>
+                <p class="text-xs text-center mt-4 text-gray-500">Secure checkout • Free shipping over CFA 50,000</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind initialization
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        content: [],
+                        theme: {
+                            extend: {},
+                        },
+                        plugins: [],
+                        ...userConfig,
+                    }
+                },
+                theme: {
+                    extend: {},
+                },
+            }
+        }
+        
+        // Simple cart functionality
+        let cart = []
+        
+        function addToCart(id) {
+            const products = {
+                1: { name: "Signature Dark 72%", price: 8500 },
+                2: { name: "Velvet Milk 38%", price: 7900 },
+                3: { name: "Luxury Truffle Gift Box", price: 18000 },
+                4: { name: "Ivory White & Pistachio", price: 9200 }
+            }
+            
+            cart.push(products[id])
+            document.getElementById('cart-count').textContent = cart.length
+            alert(`✅ ${products[id].name} added to cart!`)
+        }
+        
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal')
+            const container = document.getElementById('cart-items')
+            
+            if (modal.classList.contains('hidden')) {
+                // Render cart
+                if (cart.length === 0) {
+                    container.innerHTML = `<p class="text-center text-gray-400 py-12">Your cart is empty.<br>Start adding some chocolate magic!</p>`
+                } else {
+                    let html = `<div class="space-y-6">`
+                    let total = 0
+                    
+                    cart.forEach((item, index) => {
+                        total += item.price
+                        html += `
+                        <div class="flex justify-between items-center border-b pb-4">
+                            <div>
+                                <div class="font-medium">${item.name}</div>
+                                <div class="text-sm text-gray-500">1 × CFA ${item.price}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-semibold">CFA ${item.price}</div>
+                                <button onclick="removeFromCart(${index});" class="text-xs text-red-500 mt-1">Remove</button>
+                            </div>
+                        </div>`
+                    })
+                    
+                    html += `</div>`
+                    container.innerHTML = html
+                    document.getElementById('cart-subtotal').textContent = `CFA ${total}`
+                }
+                modal.classList.remove('hidden')
+                modal.classList.add('flex')
+            } else {
+                modal.classList.add('hidden')
+                modal.classList.remove('flex')
+            }
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1)
+            document.getElementById('cart-count').textContent = cart.length
+            toggleCart() // refresh
+            setTimeout(() => toggleCart(), 10) // reopen
+        }
+        
+        function checkout() {
+            if (cart.length === 0) return
+            alert("🎉 Thank you! This is a demo website. In a real version this would connect to a payment gateway (Stripe, PayPal, etc.).\n\nYour order total: CFA " + cart.reduce((sum, item) => sum + item.price, 0))
+            cart = []
+            document.getElementById('cart-count').textContent = '0'
+            toggleCart()
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu')
+            const icon = document.getElementById('hamburger-icon')
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden')
+                icon.classList.replace('fa-bars', 'fa-xmark')
+            } else {
+                menu.classList.add('hidden')
+                icon.classList.replace('fa-xmark', 'fa-bars')
+            }
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault()
+            alert("✅ Message received! Thank you. In a real site this would send to your email (via Formspree, EmailJS, etc.).\n\nWe'll reply within 24 hours.")
+            e.target.reset()
+        }
+        
+        // Initialize everything
+        window.onload = function() {
+            initializeTailwind()
+            console.log('%c✅ LIA\'s-CHOCOLATE website ready!', 'color:#d4af77; font-size:13px; font-weight:bold')
+            console.log('Copy this entire HTML file and save as index.html. Open in any browser — it works offline!')
+        }
+    </script>
+</body>
+</html>
